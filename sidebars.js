@@ -70,7 +70,7 @@ module.exports = {
         //   href: "https://status.matic.today/#/checkpoints",
         // },
         "develop/tools/matic-gas-station",
-        //"develop/tools/widget"
+        
       ],
     },
     {
@@ -176,6 +176,11 @@ module.exports = {
             "develop/ethereum-matic/plasma/mapping-assets",
           ],
         },
+        {
+          type: "category",
+          label:"Tools",
+          items: ["develop/ethereum-matic/tools/widget"],
+        },
         "develop/ethereum-matic/submit-mapping-request",
         "develop/ethereum-matic/mintable-assets",
       ],
@@ -202,8 +207,8 @@ module.exports = {
       type: "category",
       label: "Oracles",
       items: [
-        "develop/oracles/optimisticoracle",
         "develop/oracles/getting-started",
+        "develop/oracles/optimisticoracle",
         "develop/oracles/chainlink",
         "develop/oracles/razor",
         "develop/oracles/bandchain",
@@ -223,23 +228,12 @@ module.exports = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Realtime Updates",
-      items: [
-        "develop/dagger-webhooks",
-        {
-          type: "category",
-          label: "Zapier - Multiple Apps",
-          items: ["develop/zapier/getting-started"],
-        },
-      ],
-    },
+    
 
     {
       type: "category",
       label: "Tutorials",
-      items: ["develop/pos-using-metamask", "develop/plasma-using-metamask"],
+      items: ["develop/pos-using-metamask", "develop/plasma-using-metamask", "develop/nft-tutorial"],
     },
     {
       type: "category",
@@ -539,5 +533,6 @@ module.exports = {
     // "faq/staking-tutorials",
     "faq/wallet-bridge-faq",
     "faq/consensys-framework",
+    "faq/widget-faq",
   ],
 };

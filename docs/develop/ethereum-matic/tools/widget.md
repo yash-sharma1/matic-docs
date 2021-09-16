@@ -2,7 +2,7 @@
 id: widget
 title: Wallet Widget
 sidebar_label: Wallet Widget
-description: Build your next blockchain app on Matic.
+description: Build your next blockchain app on Polygon.
 keywords:
   - docs
   - matic
@@ -11,14 +11,17 @@ image: https://matic.network/banners/matic-network-16x9.png
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Wallet widget is a light wallet which can be embedded in any sites for executing transaction on Polygon. 
-Every widget is identified by an unique name which you can get from **Widget dashboard**
+Wallet widget is a UI tool which can be embedded in any web application for executing bridge transactions - Deposit & Withdraw. 
+
+Every widget is identified by an unique name which you can get from [Widget dashboard](https://wallet.polygon.technology/widget-dashboard) .
 
 ### Widget dashboard
 
 Widget can be created from the widget dashboard page in the wallet application. It allows the user to create a new widget with some customisable options.
 
-Once the widget is created, You can copy code snippet and add it in your application or only get the id and configure by yourself.
+Once the widget is created, You can copy code snippet and add it in your application or use the widget name and configure by yourself.
+
+Here is link to widget dashboard - https://wallet.polygon.technology/widget-dashboard
 
 ## Install
 
@@ -37,9 +40,12 @@ We have created examples for different framework and tools to help you with the 
 Create instance of widget with some configuration
 
 ```javascript
-var widget = new MaticWidget({
-    appName: "<your app id>", //appName from dashboard
+import { Widget } from "@maticnetwork/wallet-widget";
+
+var widget = new Widget({
+    appName: "<widget name>", //widget name from dashboard
     target: '#btnMaticWidget', // element selector for showing widget on click
+    network: 'testnet' // network to be used - testnet or mainnet
 });
 ```
 
@@ -61,6 +67,7 @@ Configuration can be supplied in Widget constructor.
 <button id="btnMaticWidget">Matic widget</button>
 ```
 
+- **network** : string - network to be used. Two options are available - 'testnet' or 'mainnet'.
 - **width** : number - Width of the widget
 - **height** : number - Height of the widget
 - **autoShowTime** : number - Auto show widget after specified time in millisecond
@@ -71,6 +78,19 @@ Configuration can be supplied in Widget constructor.
     - bottom-left
 - **amount** : string - Prefill the amount in text box
 - **page** : string - select the page. Available options are - `withdraw`, `deposit`.
+- **overlay** : boolean - show overlay when widget is opened. By default it is false.
+- **style** : object - apply some css styles to the widget. 
+
+```
+var widget = new MaticWidget({
+    appName: "<your app id>", //appName from dashboard
+    target: '#btnMaticWidget', // element selector for showing widget on click
+    network: 'testnet' // network to be used - testnet or mainnet,
+    style:{
+      color:'red'
+    }
+});
+```
 
 ## Events
 

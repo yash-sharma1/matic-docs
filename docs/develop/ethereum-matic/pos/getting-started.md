@@ -2,26 +2,24 @@
 id: getting-started
 title: PoS Bridge
 sidebar_label: Introduction
-description: Build your next blockchain app on Matic.
+description: Build your next blockchain app on Polygon.
 keywords:
   - docs
   - matic
 image: https://matic.network/banners/matic-network-16x9.png
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## Quick Summary
+A bridge is basically a set of contracts that help in moving assets from the root chain to the child chain. There are primarily two bridges to move assets between Ethereum and Polygon. First one is the Plasma bridge and the second one is called the **PoS Bridge** or **Proof of Stake bridge**. **Plasma bridge** provides an increased security guarantee due to the Plasma exit mechanism.
 
-The Proof of Stake bridge (PoS) enables seamless control over assets, faster deposit/withdrawal, and flexibility. As a means of transfer of assets, it is perfect for dApps and integrations that are content with security provided by a robust set of external validators.
+However, there are certain restrictions on the child token and there is a 7-day withdrawal period associated with all exits/withdraws from Polygon to Ethereum on the Plasma bridge.
 
+This is quite painful for those DApps/users who need some **flexibility** and **faster withdrawals**, and are happy with the level of security provided by the Polygon Proof-of-Stake bridge, secured by a robust set of external validators.
 
-## Introduction
-
-Moving in and out of the Polygon ecosystem is exponentially faster with the PoS bridge and this guide exists to show you just how easy it is. With our validator-run token bridge, you can move your ERC20, ERC721, and ERC1155 tokens at speeds never seen before. Unlike the plasma bridge with a 7-day withdrawal period, the PoS bridge completes deposits within 7-8 minutes and withdrawals within 30 minutes. Interested in how we can help you scale? Let's show the steps below.
-
+Proof of stake based assets provides PoS security and faster exit with one checkpoint interval.
 
 ## Steps to use the PoS Bridge
 
+<<<<<<< HEAD
 Before we enter into this section of the docs, it may help to have a thorough understanding of these terms as you'll interact with them while trying to use the bridge. [Mapping](https://docs.matic.network/docs/develop/ethereum-matic/submit-mapping-request/) and the [State Sync Mechanism](https://docs.matic.network/docs/validate/validator/state-sync-mechanism/) 
 
 Done with those links? Let's continue to a high level overview of the flow then.
@@ -52,12 +50,21 @@ Want to see this in video format? Please check it out below
 - Next up, the proof of this burn transaction is submitted to the **RootChainManager** by calling the exit function. This function call takes in the burnHash for verifying the checkpoint inclusion and only then triggers the Predicate Contract which unlocks and releases the funds that were deposited.
 
 Want to watch all of this in video form? Please check it out below
+=======
+- **Root token** and **Child token** has to be mapped on the PoS bridge. This basically means that the token contract on the root chain and the token contract on the child chain have to maintain a connection or mapping in order to transfer assets between them. Submit mapping request [here](/docs/develop/ethereum-matic/submit-mapping-request).
+>>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 
-<video loop autoplay width="70%" height="70%" controls="true" >
-  <source type="video/mp4" src="/img/matic-to-eth/matic-eth-withdraw.mp4"></source>
-  <p>Your browser does not support the video element.</p>
-</video>
+- Once mapping is done, you can either use the **matic.js SDK** to interact with the contracts or you can do the same without the SDK. However, the matic.js SDK is designed in a very user friendly way to make the asset transfer mechanism very easy to integrate with any application.
 
-and that is all!
+- **The complete cycle of transferring assets from Ethereum to Polygon and then back to Ethereum** will be explained through this tutorial. In short, the process can be summed up as mentioned below:
 
-Next up, we're going to deal with deposits and withdrawals using the Matic.js SDK. Stay tuned for the ride.
+  1. Owner of the asset **(ERC20/ERC721/ERC1155)** token has to approve a specific contract on the PoS bridge to spend the amount of tokens to be transferred. This specific contract is called the **Predicate Contract** (deployed on the Ethereum network) which actually **locks the amount of tokens to be deposited**.
+  2. Once the approval is given, the next step is to **deposit the asset**. A function call has to be made on the **RootChainManager** contract which in turn triggers the **ChildChainManager** contract on the Polygon chain.
+  3. This happens through a state sync mechanism which can be understood in detail from [here](https://docs.matic.network/docs/contribute/state-sync/state-sync/). 
+  4. The **ChildChainManager** internally calls the **deposit** function of the child token contract and the corresponding amount of asset tokens are **minted to the users account**. It is important to note that only the ChildChainManager can access the deposit function on the child token contract.
+  5. Once the user gets the tokens, they can be **transfered almost instantly with negligible fees on the Polygon chain**.
+  6. Withdrawing assets back to Ethereum is a 2 step process in which the asset tokens has to be **first burnt on the Polygon chain** and then the **proof of this burn transaction has to be submitted** on the Ethereum chain.
+  7. It takes about 20 mins to 3 hours for the burn transaction to be checkpointed into the Ethereum chain. This is done by the Proof of Stake validators.
+  8. Once the transaction has been added to the check point, a proof of the burn transaction can be submitted on the **RootChainManager** contract on Ethereum by calling the **exit** function.
+  9. This function call **verifies the checkpoint inclusion** and then triggers the Predicate contract which had locked the asset tokens when the assets were deposited initially.
+  10. As the final step, the **predicate contract releases the locked tokens** and refunds it to the Users account on Ethereum.

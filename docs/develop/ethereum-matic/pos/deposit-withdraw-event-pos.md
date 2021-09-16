@@ -2,7 +2,7 @@
 id: deposit-withdraw-event-pos
 title: Deposit and Checkpoint Event Tracking - PoS
 sidebar_label: Deposit and Checkpoint Event Tracking
-description: Build your next blockchain app on Matic.
+description: Build your next blockchain app on Polygon.
 keywords:
   - docs
   - matic
@@ -15,11 +15,9 @@ This section of the docs deal with tracking and monitoring the pace and speed of
 
 ## Deposit Events
 
-When a user deposits a token from Ethereum to Polygon, the [State Sync Mechanism](https://docs.matic.network/docs/contribute/state-sync/state-sync/#:~:text=State%20Sync%20is%20the%20native,logic%20sits%20inside%20onStateReceive%20function.) is triggered. If you didn't click on that link, the state sync mechanism is simply the native mechanism that reads Ethereum data from Polygon EVM chain and establishes a balance between the two chains. Over a process that lasts for 5-7 minutes, the mechanism mints the equivalent value of the Ethereum tokens deposits on the Polygon chain for the user. As this takes a small amount of time, it is sometimes good UX to listen to the event stream and track it to see when it starts and ends.
+When a token is deposited from Ethereum to Polygon, a process called state sync mechanism comes into play that eventually mints the tokens for the user on the Polygon chain. This process takes about ~5-7 minutes to happen and hence listening to the deposit event is very important to create a good user experience. This is an example script that can be used to track real time deposit events.
 
-## Realtime deposit event tracking using a web socket connection
-
-The fastest route to seeing the stream of the connection and intermittently checking to see its process is via a WebSocket protocol. This is what your sample script should look like
+### Realtime deposit event tracking using a web socket connection
 
 ```jsx
 const WebSocket = require("ws");
@@ -27,7 +25,7 @@ const Web3 = require("web3");
 
 // For Mumbai
 const ws = new WebSocket("wss://ws-mumbai.matic.today/");
-// For Matic mainnet: wss://ws-mainnet.matic.network/
+// For Polygon mainnet: wss://ws-mainnet.matic.network/
 const web3 = new Web3();
 const abiCoder = web3.eth.abi;
 
@@ -198,7 +196,11 @@ const chil_provider = new Web3.providers.HttpProvider(
 );
 const child_web3 = new Web3(chil_provider);
 
+<<<<<<< HEAD
 // txHash - transaction hash on Matic
+=======
+// txHash - transaction hash on Polygon
+>>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 // rootChainAddress - root chain proxy address on Ethereum
 async function checkInclusion(txHash, rootChainAddress) {
   let txDetails = await child_web3.eth.getTransactionReceipt(txHash);
@@ -245,11 +247,19 @@ checkInclusion(
   });
 ```
 
+<<<<<<< HEAD
 ### Historical checkpoint inclusion check by querying the blockchain
 
 This can be checked using the following API. The block number of the burn transaction on the child chain has to be given as a param to this GET API.
 
 ```js
+=======
+### Historical checkpoint inclusion check by querying the blockchain.
+
+This can be checked using the following API. The block number of the burn transaction on the child chain has to be given as a param to this GET API.
+
+```
+>>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 // Testnet
 https://apis.matic.network/api/v1/mumbai/block-included/block-number
 // Mainnet

@@ -247,19 +247,11 @@ checkInclusion(
   });
 ```
 
-<<<<<<< HEAD
 ### Historical checkpoint inclusion check by querying the blockchain
 
 This can be checked using the following API. The block number of the burn transaction on the child chain has to be given as a param to this GET API.
 
 ```js
-=======
-### Historical checkpoint inclusion check by querying the blockchain.
-
-This can be checked using the following API. The block number of the burn transaction on the child chain has to be given as a param to this GET API.
-
-```
->>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 // Testnet
 https://apis.matic.network/api/v1/mumbai/block-included/block-number
 // Mainnet

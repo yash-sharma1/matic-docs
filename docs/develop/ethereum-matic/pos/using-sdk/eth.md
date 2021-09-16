@@ -39,11 +39,7 @@ Withdraw ETH -
 
 ### Deposit
 
-<<<<<<< HEAD
 ETH can be deposited to the Polygon chain by calling **depositEtherFor** on the **RootChainManager** contract. The Polygon PoS client exposes the **depositEtherForUser** method to make this call. Since ETH is deposited as ERC20 on the Polygon chain, withdrawing it follows the same process as ERC20 tokens.
-=======
-ETH can be deposited to Polygon chain by calling **_depositEtherForUser_** on RootChainManager contract. Polygon POS client exposes **_depositEtherForUser_** method to make this call.
->>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 
 **_ETH_** is deposited as **_ERC20_** token on Polygon chain. For withdrawing it follow the same process as withdrawing ERC20 tokens.
 
@@ -54,7 +50,6 @@ await maticPOSClient.depositEtherForUser(from, amount, {
 });
 ```
 
-<<<<<<< HEAD
 Sidenote: Deposits from Ethereum to Polygon happen using the **State Sync** Mechanism and this takes about 5-7 minutes. After waiting for this time interval, it is recommended to check the balance using web3.js/matic.js library or using Metamask. The explorer will show the balance only if at least one asset transfer has happened on the child chain. This [link](https://docs.matic.network/docs/develop/ethereum-matic/pos/deposit-withdraw-event-pos/) explains how to track the deposit events.
 
 ### Burn
@@ -62,13 +57,6 @@ Sidenote: Deposits from Ethereum to Polygon happen using the **State Sync** Mech
 To burn the tokens and engage the withdrawal process, please call the **Withdraw** function of the MaticWETH contract. Since Ether is an ERC20 token on the Polygon chain, using the **burnERC20** method that the Polygon PoS client exposes kickstarts the process.
 
 The **burnERC20** method looks like this
-=======
-> NOTE: Deposits from Ethereum to Polygon happen using a state sync mechanism and takes about ~5-7 minutes. After waiting for this time interval, it is recommended to check the balance using web3.js/matic.js library or using Metamask. The explorer will show the balance only if at least one asset transfer has happened on the child chain. This [link](/docs/develop/ethereum-matic/pos/deposit-withdraw-event-pos) explains how to track the deposit events.
-
-### Burn
-
-User can call `withdraw` function of `MaticWETH` contract. This function should burn the tokens. Since Ether is an ERC20 token on Polygon chain, use `burnERC20` method that Polygon POS client exposes to make this call.
->>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 
 ```jsx
 await maticPOSClient.burnERC20(childToken, amount, { from });

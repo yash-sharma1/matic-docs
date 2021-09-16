@@ -318,8 +318,5 @@ For speeding up transactions via Metamask, please go to this [link](https://meta
 - Transaction hash
 - Exact action intended and the result, very descriptive
 - Screenshots or screen recordings of the action
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9

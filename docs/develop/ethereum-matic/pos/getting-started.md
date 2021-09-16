@@ -19,7 +19,6 @@ Proof of stake based assets provides PoS security and faster exit with one check
 
 ## Steps to use the PoS Bridge
 
-<<<<<<< HEAD
 Before we enter into this section of the docs, it may help to have a thorough understanding of these terms as you'll interact with them while trying to use the bridge. [Mapping](https://docs.matic.network/docs/develop/ethereum-matic/submit-mapping-request/) and the [State Sync Mechanism](https://docs.matic.network/docs/validate/validator/state-sync-mechanism/) 
 
 Done with those links? Let's continue to a high level overview of the flow then.
@@ -50,9 +49,6 @@ Want to see this in video format? Please check it out below
 - Next up, the proof of this burn transaction is submitted to the **RootChainManager** by calling the exit function. This function call takes in the burnHash for verifying the checkpoint inclusion and only then triggers the Predicate Contract which unlocks and releases the funds that were deposited.
 
 Want to watch all of this in video form? Please check it out below
-=======
-- **Root token** and **Child token** has to be mapped on the PoS bridge. This basically means that the token contract on the root chain and the token contract on the child chain have to maintain a connection or mapping in order to transfer assets between them. Submit mapping request [here](/docs/develop/ethereum-matic/submit-mapping-request).
->>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 
 - Once mapping is done, you can either use the **matic.js SDK** to interact with the contracts or you can do the same without the SDK. However, the matic.js SDK is designed in a very user friendly way to make the asset transfer mechanism very easy to integrate with any application.
 

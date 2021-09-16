@@ -196,11 +196,7 @@ const chil_provider = new Web3.providers.HttpProvider(
 );
 const child_web3 = new Web3(chil_provider);
 
-<<<<<<< HEAD
-// txHash - transaction hash on Matic
-=======
 // txHash - transaction hash on Polygon
->>>>>>> 4184e271f0f174ad013682f17219ce36183ccff9
 // rootChainAddress - root chain proxy address on Ethereum
 async function checkInclusion(txHash, rootChainAddress) {
   let txDetails = await child_web3.eth.getTransactionReceipt(txHash);

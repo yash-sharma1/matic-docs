@@ -40,10 +40,10 @@ For snapshot download links, see [Polygon Chains Snapshots](https://snapshots.ma
 ## Prerequisites
 
 
-- One machine.
+- One machine is needed.
 - `build-essential` installed on the Full Node machine.
 - To install:
-- sudo apt-get install build-essential
+- `sudo apt-get install build-essential`
 - Go 1.17 installed on both the Full Node machine.
 
 <!-- ### To install
@@ -297,7 +297,7 @@ You can use VPN to restrict access for 22 port as per your requirement and secur
 
 This section guides you through starting and running a full node on a binary.
 
-For the system requirements, see [Minimum Technical Requirements](http://localhost:3000/docs/develop/network-details/technical-requirements).
+For the system requirements, see [Minimum Technical Requirements](https://docs.polygon.technology/docs/develop/network-details/technical-requirements).
 
 :::note
 
@@ -312,10 +312,10 @@ For snapshot download links, see [Polygon Chains Snapshots](https://snapshots.ma
 
 ## Prerequisites
 
-- One machine.
+- One machine is needed.
 - `build-essential` installed on the Full Node machine.
 - To install:
-- sudo apt-get install build-essential
+- `sudo apt-get install build-essential`
 - Go 1.17 installed on both the Full Node machine.
 
 <!-- ### To install
